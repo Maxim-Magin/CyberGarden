@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:taganrog_defence/Design/design.dart';
 import 'package:taganrog_defence/Screens/buy_ticket_page/buy_ticket_bloc.dart';
 import 'package:taganrog_defence/Screens/buy_ticket_page/buy_ticket_ui.dart';
+import 'package:taganrog_defence/Screens/home_page/home_page_bloc.dart';
+import 'package:taganrog_defence/Screens/home_page/home_page_ui.dart';
 import 'package:taganrog_defence/bloc/bloc_provider.dart';
+import 'package:taganrog_defence/entities/metric.dart';
+import 'package:taganrog_defence/entities/passport.dart';
+import 'package:taganrog_defence/entities/user.dart';
 
 class LogInPage extends StatefulWidget {
   @override
@@ -12,6 +17,19 @@ class LogInPage extends StatefulWidget {
 class _LogInPageState extends State<LogInPage> {
   final _loginTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
+
+  User _user = User(
+    name: "Магин Максим Сергеевич",
+    phone: "88888888888",
+    passport: Passport(series: 1, number: 1, type: PassportType.Standard),
+    metric: Metric(
+      weight: 85.0,
+      height: 183.0,
+      chestGirth: 105.0,
+      thighGirth: 63.0,
+      waistGirth: 88.0,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +95,32 @@ class _LogInPageState extends State<LogInPage> {
                 Column(
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  BlocProvider(
+                            child: HomePage(user: _user),
+                            bloc: HomePageBloc(),
+                          ),
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
+                            return ScaleTransition(
+                              scale: Tween<double>(
+                                begin: 0.0,
+                                end: 1.0,
+                              ).animate(
+                                CurvedAnimation(
+                                  parent: animation,
+                                  curve: Curves.fastOutSlowIn,
+                                ),
+                              ),
+                              alignment: Alignment.center,
+                              child: child,
+                            );
+                          },
+                        ));
+                      },
                       child: Text(
                         'Войти',
                         style: TextStyle(fontSize: 28.0),
@@ -91,11 +134,12 @@ class _LogInPageState extends State<LogInPage> {
                     ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(PageRouteBuilder(
-                          pageBuilder: (context, animation, secondaryAnimation) =>
-                              BlocProvider(
-                                child: TicketBuyPage(),
-                                bloc: TicketBuyBloc(),
-                              ),
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  BlocProvider(
+                            child: TicketBuyPage(),
+                            bloc: TicketBuyBloc(),
+                          ),
                           transitionsBuilder:
                               (context, animation, secondaryAnimation, child) {
                             return ScaleTransition(
