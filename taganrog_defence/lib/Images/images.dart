@@ -26,4 +26,7 @@ class ApplicationImages{
   static String calendar(){
     return "assets/calday.png";
   }
+  static String defendersScreen(){
+    return "assets/back.jpg";
+  }
 }

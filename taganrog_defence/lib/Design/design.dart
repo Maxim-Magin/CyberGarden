@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 class Design{
   static Color themeColor(){
+    return Colors.blueAccent;
+  }
+
+  static Color circleItemColor(){
     return Colors.white;
   }
 
