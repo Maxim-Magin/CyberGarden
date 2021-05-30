@@ -197,7 +197,7 @@ class _StartPageState extends State<StartPage> {
                           ),
                         ),
                         Text(
-                          '45 тысяч человек',
+                          '45 тысяч участников',
                           style: Design.iconTextStyle(),
                           textAlign: TextAlign.center,
                         ),
@@ -215,72 +215,78 @@ class _StartPageState extends State<StartPage> {
           end: Alignment.topRight,
           colors: [Color(0xFF2bc0e4), Color(0xFFeaecc6)],
         )),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              children: [
-                Text(
-                  'Стандартный пакет:',
-                  style: Design.titleTextStyle(),
-                ),
-                Column(
-                  children: [
-                    Text(
-                      '- доступ ко всем локациям фестиваля',
-                      style: Design.regularTextStyle(),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(
-                      '- возможность принятия участия в реконструкциях',
-                      style: Design.regularTextStyle(),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(
-                      '- получение бонусов в заведениях HoReCa',
-                      style: Design.regularTextStyle(),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(
-                      '- профессиональная съемка',
-                      style: Design.regularTextStyle(),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 50.0,
-            ),
-            Column(
-              children: [
-                Text(
-                  'VIP:',
-                  style: Design.titleTextStyle(),
-                ),
-                Column(
-                  children: [
-                    Text(
-                      '- доступ в VIP-зоны',
-                      style: Design.regularTextStyle(),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(
-                      '- получение памятных подарков по окончании фестиваля',
-                      style: Design.regularTextStyle(),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(
-                      '- скидки в заведениях HoReCa',
-                      style: Design.regularTextStyle(),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              ],
-            )
-          ],
+        child: Padding(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    'Стандартный пакет:',
+                    style: Design.titleTextStyle(),
+                    textAlign: TextAlign.center,
+
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        '- доступ ко всем локациям фестиваля',
+                        style: Design.regularTextStyle(),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        '- возможность принятия участия в реконструкциях',
+                        style: Design.regularTextStyle(),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        '- получение бонусов в заведениях HoReCa',
+                        style: Design.regularTextStyle(),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        '- профессиональная съемка',
+                        style: Design.regularTextStyle(),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Column(
+                children: [
+                  Text(
+                    'VIP:',
+                    style: Design.titleTextStyle(),
+                    textAlign: TextAlign.left,
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        '- доступ в VIP-зоны',
+                        style: Design.regularTextStyle(),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        '- получение памятных подарков по окончании фестиваля',
+                        style: Design.regularTextStyle(),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        '- скидки в заведениях HoReCa',
+                        style: Design.regularTextStyle(),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            ],
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
         ),
       ),
       Container(

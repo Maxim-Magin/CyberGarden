@@ -29,11 +29,16 @@ class _LogInPageState extends State<LogInPage> {
       thighGirth: 63.0,
       waistGirth: 88.0,
     ),
+    status: "Зритель"
   );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFFeaecc6),
+        iconTheme: IconThemeData(color: Color(0xFF2bc0e4)),
+      ),
       body: SafeArea(
         child: Container(
             height: MediaQuery.of(context).size.height,
@@ -159,7 +164,7 @@ class _LogInPageState extends State<LogInPage> {
                         ));
                       },
                       child: Text(
-                        'Купить билет!',
+                        'Купить билет',
                         style: TextStyle(fontSize: 28.0),
                       ),
                       style: ElevatedButton.styleFrom(

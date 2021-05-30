@@ -15,7 +15,7 @@ class Design{
 
   static TextStyle regularTextStyle(){
     return TextStyle(
-      fontSize: 24.0,
+      fontSize: 20.0,
       fontFamily: "Montserrat",
     );
   }

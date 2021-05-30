@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ApplicationImages{
   static String getFirstImage(){
     return "assets/firstImage.jpg";
@@ -28,5 +30,34 @@ class ApplicationImages{
   }
   static String defendersScreen(){
     return "assets/back.jpg";
+  }
+  static String festivalMap(){
+    return "assets/map.png";
+  }
+
+  static String code(){
+    return "assets/code.jpg";
+  }
+
+  static List<String> photoGalleryLinks(){
+    List<String> imagesLinks = [
+      getFirstImage(),
+      getDefendersImage(),
+      getSmokeImage(),
+      getTheBestImage(),
+      getFirstImage(),
+      getDefendersImage(),
+      getSmokeImage(),
+      getTheBestImage(),
+      getFirstImage(),
+      getDefendersImage(),
+      getSmokeImage(),
+      getTheBestImage(),
+      getFirstImage(),
+      getDefendersImage(),
+      getSmokeImage(),
+      getTheBestImage(),
+    ];
+    return imagesLinks;
   }
 }

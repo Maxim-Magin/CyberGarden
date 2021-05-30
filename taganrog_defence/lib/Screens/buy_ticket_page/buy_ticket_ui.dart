@@ -40,6 +40,10 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFFeaecc6),
+        iconTheme: IconThemeData(color: Color(0xFF2bc0e4)),
+      ),
       body: SafeArea(
         child: Container(
           height: MediaQuery.of(context).size.height,
@@ -164,7 +168,7 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
                           primary: Design.themeColor()),
                       child: Container(
                         child: Text(
-                          'Купить билет!',
+                          'Купить билет',
                           style: TextStyle(fontSize: 28, color: Colors.white),
                         ),
                       ),
@@ -202,90 +206,6 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
           ),
         ),
       ),
-    );
-  }
-
-  Future<void> _showMyDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('User already exists'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('A user with this username already exists'),
-                Text('Please choose a different username'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  Future<void> _showPasswordDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Invalid password'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('Couldn\'t confirm password'),
-                Text('Check that your password is correct and try again'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  Future<void> _showEmptyFieldDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Empty field'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('Some fields are empty'),
-                Text('Please, fill all fields'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }

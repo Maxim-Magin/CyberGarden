@@ -7,6 +7,8 @@ class Passport {
       : _series = series,
         _number = number,
         _type = type;
+
+  PassportType getPassportType() => _type;
 }
 
 enum PassportType { Standard, VIP }
