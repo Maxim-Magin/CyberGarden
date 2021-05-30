@@ -39,13 +39,9 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFFeaecc6),
-        iconTheme: IconThemeData(color: Color(0xFF2bc0e4)),
-      ),
-      body: SafeArea(
-        child: Container(
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
           height: MediaQuery.of(context).size.height,
           alignment: AlignmentDirectional.center,
           decoration: BoxDecoration(
@@ -100,7 +96,8 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
                   color: Colors.white,
                   child: DropdownButtonFormField(
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(), fillColor: Colors.white),
+                        border: OutlineInputBorder(),
+                        fillColor: Colors.white),
                     isExpanded: true,
                     hint: Text(
                       'Статус',
@@ -156,11 +153,11 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
                           begin: Alignment.bottomLeft,
                           end: Alignment.topRight,
                           colors: <Color>[
-                        Color(0xFFE0E0E0),
-                        Color(0xFFBDBDBD),
-                        Color(0xFF757575),
-                        Color(0xFF424242),
-                      ])),
+                            Color(0xFFE0E0E0),
+                            Color(0xFFBDBDBD),
+                            Color(0xFF757575),
+                            Color(0xFF424242),
+                          ])),
                   child: ButtonTheme(
                     minWidth: 200,
                     child: ElevatedButton(
@@ -169,19 +166,20 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
                       child: Container(
                         child: Text(
                           'Купить билет',
-                          style: TextStyle(fontSize: 28, color: Colors.white),
+                          style:
+                          TextStyle(fontSize: 28, color: Colors.white),
                         ),
                       ),
                       onPressed: () {
                         Navigator.of(context).push(PageRouteBuilder(
                           pageBuilder:
                               (context, animation, secondaryAnimation) =>
-                                  BlocProvider(
-                                    child: LogInPage(),
-                                    bloc: LogInBloc(),
-                                  ),
-                          transitionsBuilder:
-                              (context, animation, secondaryAnimation, child) {
+                              BlocProvider(
+                                child: LogInPage(),
+                                bloc: LogInBloc(),
+                              ),
+                          transitionsBuilder: (context, animation,
+                              secondaryAnimation, child) {
                             return ScaleTransition(
                               scale: Tween<double>(
                                 begin: 0.0,

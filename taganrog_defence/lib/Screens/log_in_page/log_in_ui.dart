@@ -15,165 +15,165 @@ class LogInPage extends StatefulWidget {
 }
 
 class _LogInPageState extends State<LogInPage> {
-  final _loginTextController = TextEditingController();
-  final _passwordTextController = TextEditingController();
+  final _seriesController = TextEditingController();
+  final _numberController = TextEditingController();
 
   User _user = User(
-    name: "Магин Максим Сергеевич",
-    phone: "88888888888",
-    passport: Passport(series: 1, number: 1, type: PassportType.Standard),
-    metric: Metric(
-      weight: 85.0,
-      height: 183.0,
-      chestGirth: 105.0,
-      thighGirth: 63.0,
-      waistGirth: 88.0,
-    ),
-    status: "Зритель"
-  );
+      name: "Магин Максим Сергеевич",
+      phone: "88888888888",
+      passport: Passport(series: 1, number: 1, type: PassportType.Standard),
+      metric: Metric(
+        weight: 85.0,
+        height: 183.0,
+        chestGirth: 105.0,
+        thighGirth: 63.0,
+        waistGirth: 88.0,
+      ),
+      status: "Зритель");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFFeaecc6),
-        iconTheme: IconThemeData(color: Color(0xFF2bc0e4)),
-      ),
       body: SafeArea(
-        child: Container(
-            height: MediaQuery.of(context).size.height,
-            alignment: AlignmentDirectional.center,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-                colors: [Color(0xFF2bc0e4), Color(0xFFeaecc6)],
+        child: SingleChildScrollView(
+          child: Container(
+              height: MediaQuery.of(context).size.height,
+              alignment: AlignmentDirectional.center,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                  colors: [Color(0xFF2bc0e4), Color(0xFFeaecc6)],
+                ),
               ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      "фестиваль",
-                      style: Design.titleTextStyle(),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(
-                      "\"Оборона Таганрога\"".toUpperCase(),
-                      style: Design.titleTextStyle(),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Container(
-                      width: 280,
-                      color: Colors.white,
-                      child: TextField(
-                        controller: _loginTextController,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Серия паспорта фестиваля',
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "фестиваль",
+                        style: Design.titleTextStyle(),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        "\"Оборона Таганрога\"".toUpperCase(),
+                        style: Design.titleTextStyle(),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        width: 280,
+                        color: Colors.white,
+                        child: TextField(
+                          controller: _seriesController,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Серия паспорта фестиваля',
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Container(
-                      width: 280,
-                      color: Colors.white,
-                      child: TextField(
-                        controller: _passwordTextController,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Номер паспорта фестиваля',
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      Container(
+                        width: 280,
+                        color: Colors.white,
+                        child: TextField(
+                          controller: _numberController,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Номер паспорта фестиваля',
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(PageRouteBuilder(
-                          pageBuilder:
-                              (context, animation, secondaryAnimation) =>
-                                  BlocProvider(
-                            child: HomePage(user: _user),
-                            bloc: HomePageBloc(),
-                          ),
-                          transitionsBuilder:
-                              (context, animation, secondaryAnimation, child) {
-                            return ScaleTransition(
-                              scale: Tween<double>(
-                                begin: 0.0,
-                                end: 1.0,
-                              ).animate(
-                                CurvedAnimation(
-                                  parent: animation,
-                                  curve: Curves.fastOutSlowIn,
-                                ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          if (_seriesController.text == "1")
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                    BlocProvider(
+                                      child: HomePage(user: _user),
+                                      bloc: HomePageBloc(),
+                                    ),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  return ScaleTransition(
+                                    scale: Tween<double>(
+                                      begin: 0.0,
+                                      end: 1.0,
+                                    ).animate(
+                                      CurvedAnimation(
+                                        parent: animation,
+                                        curve: Curves.fastOutSlowIn,
+                                      ),
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: child,
+                                  );
+                                },
                               ),
-                              alignment: Alignment.center,
-                              child: child,
                             );
-                          },
-                        ));
-                      },
-                      child: Text(
-                        'Войти',
-                        style: TextStyle(fontSize: 28.0),
+                        },
+                        child: Text(
+                          'Войти',
+                          style: TextStyle(fontSize: 28.0),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: Design.themeColor()),
                       ),
-                      style: ElevatedButton.styleFrom(
-                          primary: Design.themeColor()),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(PageRouteBuilder(
-                          pageBuilder:
-                              (context, animation, secondaryAnimation) =>
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          if (_numberController.text == "1")
+                            Navigator.of(context).push(PageRouteBuilder(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
                                   BlocProvider(
-                            child: TicketBuyPage(),
-                            bloc: TicketBuyBloc(),
-                          ),
-                          transitionsBuilder:
-                              (context, animation, secondaryAnimation, child) {
-                            return ScaleTransition(
-                              scale: Tween<double>(
-                                begin: 0.0,
-                                end: 1.0,
-                              ).animate(
-                                CurvedAnimation(
-                                  parent: animation,
-                                  curve: Curves.fastOutSlowIn,
-                                ),
-                              ),
-                              alignment: Alignment.center,
-                              child: child,
-                            );
-                          },
-                        ));
-                      },
-                      child: Text(
-                        'Купить билет',
-                        style: TextStyle(fontSize: 28.0),
+                                    child: TicketBuyPage(),
+                                    bloc: TicketBuyBloc(),
+                                  ),
+                              transitionsBuilder:
+                                  (context, animation, secondaryAnimation, child) {
+                                return ScaleTransition(
+                                  scale: Tween<double>(
+                                    begin: 0.0,
+                                    end: 1.0,
+                                  ).animate(
+                                    CurvedAnimation(
+                                      parent: animation,
+                                      curve: Curves.fastOutSlowIn,
+                                    ),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: child,
+                                );
+                              },
+                            ));
+                        },
+                        child: Text(
+                          'Купить билет',
+                          style: TextStyle(fontSize: 28.0),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: Design.themeColor()),
                       ),
-                      style: ElevatedButton.styleFrom(
-                          primary: Design.themeColor()),
-                    ),
-                  ],
-                )
-              ],
-            )),
+                    ],
+                  )
+                ],
+              )),
+        ),
       ),
     );
   }
