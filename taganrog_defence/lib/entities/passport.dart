@@ -9,6 +9,8 @@ class Passport {
         _type = type;
 
   PassportType getPassportType() => _type;
+  int getPassportSeries() => _series;
+  int getPassportNumber() => _number;
 }
 
 enum PassportType { Standard, VIP }

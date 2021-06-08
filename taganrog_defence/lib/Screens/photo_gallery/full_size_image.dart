@@ -3,8 +3,9 @@ import 'package:taganrog_defence/Images/images.dart';
 
 class FullSizeImage extends StatefulWidget {
   final index;
+  final List<Image> _images;
 
-  FullSizeImage(this.index);
+  FullSizeImage(this.index, this._images);
 
   @override
   _FullSizeImageState createState() => new _FullSizeImageState();
@@ -29,7 +30,7 @@ class _FullSizeImageState extends State<FullSizeImage> {
             child: Stack(
               children: [
                 PageView.builder(
-                  itemCount: ApplicationImages.photoGalleryLinks().length,
+                  itemCount: widget._images.length,
                   controller: PageController(
                     initialPage: widget.index,
                     keepPage: true,
@@ -42,10 +43,7 @@ class _FullSizeImageState extends State<FullSizeImage> {
                           tag: "$index",
                           child: Center(
                             child: Container(
-                              child: Image(
-                                image: AssetImage(ApplicationImages
-                                    .photoGalleryLinks()[index]),
-                              ),
+                              child: widget._images[index],
                             ),
                           ),
                         ),

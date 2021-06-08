@@ -15,7 +15,7 @@ class Design{
 
   static TextStyle regularTextStyle(){
     return TextStyle(
-      fontSize: 20.0,
+      fontSize: 24.0,
       fontFamily: "Montserrat",
     );
   }
@@ -28,7 +28,7 @@ class Design{
   }
   static TextStyle titleTextStyle(){
     return TextStyle(
-      fontSize: 28.0,
+      fontSize: 26.0,
       fontFamily: "Montserrat",
       fontWeight: FontWeight.bold,
       color: Colors.white,

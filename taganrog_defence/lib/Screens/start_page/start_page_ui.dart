@@ -143,7 +143,10 @@ class _StartPageState extends State<StartPage> {
               Padding(
                 child: Text(
                   'Международный фестиваль «Оборона Таганрога 1855 года» - фестиваль, реконструирующий наиболее яркий и героический эпизод Крымской (Восточной) войны 1853-1856 гг в Приазовье - оборону города Таганрога.',
-                  style: Design.regularTextStyle(),
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: "Montserrat",
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -231,22 +234,34 @@ class _StartPageState extends State<StartPage> {
                     children: [
                       Text(
                         '- доступ ко всем локациям фестиваля',
-                        style: Design.regularTextStyle(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         '- возможность принятия участия в реконструкциях',
-                        style: Design.regularTextStyle(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         '- получение бонусов в заведениях HoReCa',
-                        style: Design.regularTextStyle(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         '- профессиональная съемка',
-                        style: Design.regularTextStyle(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -267,17 +282,26 @@ class _StartPageState extends State<StartPage> {
                     children: [
                       Text(
                         '- доступ в VIP-зоны',
-                        style: Design.regularTextStyle(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         '- получение памятных подарков по окончании фестиваля',
-                        style: Design.regularTextStyle(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         '- скидки в заведениях HoReCa',
-                        style: Design.regularTextStyle(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -306,32 +330,50 @@ class _StartPageState extends State<StartPage> {
                     children: [
                       Text(
                         'Вы можете принять участие как:',
-                        style: Design.regularTextStyle(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         '- зритель',
-                        style: Design.regularTextStyle(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         '- участник реконструкци боя',
-                        style: Design.regularTextStyle(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         '- участник реконструкции бала',
-                        style: Design.regularTextStyle(),
+                        style:TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         '- участник спортивных состязаний',
-                        style: Design.regularTextStyle(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         '- участник исторического променада',
-                        style: Design.regularTextStyle(),
+                        style:TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Montserrat",
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ],
