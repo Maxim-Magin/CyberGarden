@@ -197,6 +197,10 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
                         ),
                       ),
                       onPressed: () {
+                        if((_nameTextController.value.text == '')||
+                            (_phoneTextController.value.text ==''))
+                          _showEmptyFieldDialog();
+                        else
                         showDialog<void>(
                             context: context,
                             barrierDismissible: false,
@@ -235,31 +239,6 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
                                     onPressed: () {
                                       Navigator.pop(context);
                                       Navigator.pop(context);
-                                      // Navigator.of(context)
-                                      //     .push(PageRouteBuilder(
-                                      //   pageBuilder: (context, animation,
-                                      //           secondaryAnimation) =>
-                                      //       BlocProvider(
-                                      //     child: LogInPage(),
-                                      //     bloc: LogInBloc(),
-                                      //   ),
-                                      //   transitionsBuilder: (context, animation,
-                                      //       secondaryAnimation, child) {
-                                      //     return ScaleTransition(
-                                      //       scale: Tween<double>(
-                                      //         begin: 0.0,
-                                      //         end: 1.0,
-                                      //       ).animate(
-                                      //         CurvedAnimation(
-                                      //           parent: animation,
-                                      //           curve: Curves.fastOutSlowIn,
-                                      //         ),
-                                      //       ),
-                                      //       alignment: Alignment.center,
-                                      //       child: child,
-                                      //     );
-                                      //   },
-                                      // ));
                                     },
                                   ),
                                 ],
@@ -274,6 +253,62 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Пользователь существует'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('A user with this username already exists'),
+                Text('Please choose a different username'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _showEmptyFieldDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Пустые поля'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Некоторые данные не заполнены'),
+                Text('Пожалуйста, заполните всю информацию о себе'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
