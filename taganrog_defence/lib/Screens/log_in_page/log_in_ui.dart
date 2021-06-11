@@ -23,6 +23,7 @@ class _LogInPageState extends State<LogInPage> {
     User(
       name: "Магин Максим Сергеевич",
       phone: "88888888888",
+      email: "makmagin@sfedu.ru",
       passport: Passport(series: 1, number: 1, type: PassportType.Standard),
       metric: Metric(
         weight: 85.0,
@@ -33,10 +34,12 @@ class _LogInPageState extends State<LogInPage> {
       ),
       status: "Зритель",
       isAdmin: false,
+      costume: "Свой"
     ),
     User(
       name: "Иванов Иван Иванович",
       phone: "88888888888",
+      email: "tgndefence@support.ru",
       passport: Passport(series: 2, number: 2, type: PassportType.Standard),
       metric: Metric(
         weight: 85.0,

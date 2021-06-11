@@ -21,6 +21,7 @@ class TicketBuyPage extends StatefulWidget {
 class _TicketBuyPageState extends State<TicketBuyPage> {
   final _nameTextController = TextEditingController();
   final _phoneTextController = TextEditingController();
+  final _emailTextController = TextEditingController();
 
   String _statusValue;
   String _passportValue;
@@ -36,6 +37,8 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
   @override
   void initState() {
     super.initState();
+    _statusValue = _statusItems.first;
+    _passportValue = _passportItems.first;
   }
 
   @override
@@ -44,6 +47,7 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
     super.dispose();
     _nameTextController.dispose();
     _phoneTextController.dispose();
+    _emailTextController.dispose();
   }
 
   @override
@@ -93,6 +97,20 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'ФИО',
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  width: 280,
+                  color: Colors.white,
+                  child: TextField(
+                    controller: _emailTextController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Email',
                     ),
                   ),
                 ),
@@ -197,53 +215,59 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
                         ),
                       ),
                       onPressed: () {
-                        if((_nameTextController.value.text == '')||
-                            (_phoneTextController.value.text ==''))
+                        if ((_nameTextController.value.text == '') ||
+                            (_phoneTextController.value.text == '') ||
+                            (_emailTextController.value.text == ''))
                           _showEmptyFieldDialog();
-                        else
-                        showDialog<void>(
-                            context: context,
-                            barrierDismissible: false,
-                            builder: (context) {
-                              Random rand = Random();
-                              int number = rand.nextInt(100);
-                              int series = rand.nextInt(100);
-                              widget._users.add(User(
-                                name: _nameTextController.text,
-                                phone: _phoneTextController.text,
-                                passport: Passport(
-                                  series: series,
-                                  number: number,
-                                  type: (_passportValue == "Стандартный")
-                                      ? PassportType.Standard
-                                      : PassportType.VIP,
-                                ),
-                                metric: Metric(
-                                  weight: 0.0,
-                                  height: 0.0,
-                                  chestGirth: 0.0,
-                                  thighGirth: 0.0,
-                                  waistGirth: 0.0,
-                                ),
-                                status: _statusValue,
-                                isAdmin: false,
-                              ));
-                              return AlertDialog(
-                                title: const Text('Ваш паспорт'),
-                                content: Text(
-                                  'Серия: $series, номер: $number',
-                                ),
-                                actions: <Widget>[
-                                  TextButton(
-                                    child: const Text('Ок'),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                      Navigator.pop(context);
-                                    },
+                        else if (widget._users.contains(widget._users
+                            .firstWhere((user) =>
+                                user.getUserEmail() ==
+                                _emailTextController.value.text))) {
+                          _showMyDialog();
+                        } else
+                          showDialog<void>(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (context) {
+                                Random rand = Random();
+                                int number = rand.nextInt(100);
+                                int series = rand.nextInt(100);
+                                widget._users.add(User(
+                                  name: _nameTextController.text,
+                                  phone: _phoneTextController.text,
+                                  passport: Passport(
+                                    series: series,
+                                    number: number,
+                                    type: (_passportValue == "Стандартный")
+                                        ? PassportType.Standard
+                                        : PassportType.VIP,
                                   ),
-                                ],
-                              );
-                            });
+                                  metric: Metric(
+                                    weight: 0.0,
+                                    height: 0.0,
+                                    chestGirth: 0.0,
+                                    thighGirth: 0.0,
+                                    waistGirth: 0.0,
+                                  ),
+                                  status: _statusValue,
+                                  isAdmin: false,
+                                ));
+                                return AlertDialog(
+                                  title: const Text('Ваш паспорт'),
+                                  content: Text(
+                                    'Серия: $series, номер: $number',
+                                  ),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: const Text('Ок'),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
+                                );
+                              });
                       },
                     ),
                   ),
@@ -266,8 +290,8 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('A user with this username already exists'),
-                Text('Please choose a different username'),
+                Text('Пользователь с таким email уже существует'),
+                Text('Пожалуйста, введите другой email'),
               ],
             ),
           ),
