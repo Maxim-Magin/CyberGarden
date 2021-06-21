@@ -530,292 +530,299 @@ class _HomePageState extends State<HomePage> {
               itemCount: widget._users.length,
               itemBuilder: (context, index) {
                 User user = widget._users[index];
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    OpenContainer(
-                      closedBuilder: (context, open) {
-                        return GestureDetector(
-                          onTap: open,
-                          child: Container(
-                            child: Column(
-                              children: [
-                                Text(
-                                  "${user.getUserName()}",
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontFamily: "Montserrat",
-                                  ),
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: OpenContainer(
+                          //openColor: Colors.transparent,
+                          closedColor: Color(0xFFeaecc6),
+                          //middleColor: Colors.transparent,
+                          closedBuilder: (context, open) {
+                            return GestureDetector(
+                              onTap: open,
+                              child: Container(
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      "${user.getUserName()}",
+                                      style: TextStyle(
+                                        fontSize: 20.0,
+                                        fontFamily: "Montserrat",
+                                      ),
+                                    ),
+                                    Text(
+                                      "${user.getUserPhone()}",
+                                      style: TextStyle(
+                                        fontSize: 20.0,
+                                        fontFamily: "Montserrat",
+                                      ),
+                                    ),
+                                    if (user.isUserAdmin())
+                                      Text(
+                                        "Администратор",
+                                        style: TextStyle(
+                                          fontSize: 20.0,
+                                          fontFamily: "Montserrat",
+                                        ),
+                                      ),
+                                    if (!user.isUserAdmin())
+                                      Text(
+                                        "Гость",
+                                        style: TextStyle(
+                                          fontSize: 20.0,
+                                          fontFamily: "Montserrat",
+                                        ),
+                                      ),
+                                    //SizedBox(height: 10,)
+                                  ],
                                 ),
-                                Text(
-                                  "${user.getUserPhone()}",
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontFamily: "Montserrat",
-                                  ),
-                                ),
-                                if (user.isUserAdmin())
-                                  Text(
-                                    "Администратор",
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontFamily: "Montserrat",
-                                    ),
-                                  ),
-                                if (!user.isUserAdmin())
-                                  Text(
-                                    "Гость",
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontFamily: "Montserrat",
-                                    ),
-                                  ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                      openBuilder: (context, close) {
-                        return GestureDetector(
-                          onTap: close,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-                            child: Container(
-                              decoration: BoxDecoration(border: Border.all()),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Серия паспорта",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                          widget._user.getUserPassport().getPassportSeries().toString(),
-                                          style: Design.regularTextStyle(),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Номер паспорта",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                          widget._user.getUserPassport().getPassportNumber().toString(),
-                                          style: Design.regularTextStyle(),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "ФИО",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                          widget._user.getUserName(),
-                                          style: Design.regularTextStyle(),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Телефон",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                          widget._user.getUserPhone(),
-                                          style: Design.regularTextStyle(),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Статус",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                          widget._user.isUserAdmin()
-                                              ? "Администратор"
-                                              : "Гость"
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Роль",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                            widget._user.getUserStatus()
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Костюм",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                            widget._user.getCostume()
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Рост, см",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                            widget._user.getUserMetric().height.toString()
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Вес, кг",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                            widget._user.getUserMetric().weight.toString()
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Обхват груди, см",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                            widget._user.getUserMetric().chestGirth.toString()
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Обхват талии, см",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                            widget._user.getUserMetric().waistGirth.toString()
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration:
-                                    BoxDecoration(border: Border(bottom: BorderSide())),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Обхват бедра, см",
-                                          style: Design.regularTextStyle(),
-                                        ),
-                                        Text(
-                                            widget._user.getUserMetric().thighGirth.toString()
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
                               ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    Container(
-                        height: 40.0,
-                        width: 40.0,
-                        child: FittedBox(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                if (!(user == widget._user)) {
-                                  widget._users.remove(user);
-                                } else {
-                                  // TODO: can't remove yourself
-                                }
-                              });
-                            },
-                            child: Icon(
-                              Icons.close,
-                              color: Color(0xFF2bc0e4),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              shape: CircleBorder(),
-                              //padding: EdgeInsets.all(20),
-                              primary: Color(0xFFeaecc6),
-                            ),
-                          ),
-                        )),
-                  ],
+                            );
+                          },
+                          openBuilder: (context, close) {
+                            return GestureDetector(
+                              onTap: close,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+                                child: Container(
+                                  //decoration: BoxDecoration(border: Border.all()),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Серия паспорта",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                              widget._users[index].getUserPassport().getPassportSeries().toString(),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Номер паспорта",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                              widget._users[index].getUserPassport().getPassportNumber().toString(),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "ФИО",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                              widget._users[index].getUserName(),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Телефон",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                              widget._users[index].getUserPhone(),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Статус",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                                widget._users[index].isUserAdmin()
+                                                    ? "Администратор"
+                                                    : "Гость"
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Роль",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                                widget._users[index].getUserStatus()
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Костюм",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                                widget._users[index].getCostume()
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Рост, см",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                                widget._users[index].getUserMetric().height.toString()
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Вес, кг",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                                widget._users[index].getUserMetric().weight.toString()
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Обхват груди, см",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                                widget._users[index].getUserMetric().chestGirth.toString()
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Обхват талии, см",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                                widget._users[index].getUserMetric().waistGirth.toString()
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration:
+                                        BoxDecoration(border: Border(bottom: BorderSide())),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Обхват бедра, см",
+                                              style: Design.regularTextStyle(),
+                                            ),
+                                            Text(
+                                                widget._users[index].getUserMetric().thighGirth.toString()
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Flexible(
+                        child: Container(
+                            height: 40.0,
+                            width: 40.0,
+                            child: FittedBox(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    if (!(user == widget._user)) {
+                                      widget._users.remove(user);
+                                    } else {
+                                      // TODO: can't remove yourself
+                                    }
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.close,
+                                  color: Color(0xFF2bc0e4),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  shape: CircleBorder(),
+                                  //padding: EdgeInsets.all(20),
+                                  primary: Color(0xFFeaecc6),
+                                ),
+                              ),
+                            )),
+                      )
+                    ],
+                  ),
                 );
               },
             )

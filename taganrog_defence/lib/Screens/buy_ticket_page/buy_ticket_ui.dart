@@ -219,12 +219,13 @@ class _TicketBuyPageState extends State<TicketBuyPage> {
                             (_phoneTextController.value.text == '') ||
                             (_emailTextController.value.text == ''))
                           _showEmptyFieldDialog();
-                        else if (widget._users.contains(widget._users
-                            .firstWhere((user) =>
-                                user.getUserEmail() ==
-                                _emailTextController.value.text))) {
-                          _showMyDialog();
-                        } else
+                        // else if (widget._users.contains(widget._users
+                        //     .firstWhere((user) =>
+                        //         user.getUserEmail() ==
+                        //         _emailTextController.value.text))) {
+                        //   _showMyDialog();
+                        //}
+                        else
                           showDialog<void>(
                               context: context,
                               barrierDismissible: false,
